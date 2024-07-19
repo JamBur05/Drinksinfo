@@ -11,13 +11,13 @@ namespace DrinksInfo
 {
     public class DrinksService
     {
-        public static async Task<Category> GetCategoriesAsync()
+        public static void GetCategories()
         {
             var client = new RestClient("https://www.thecocktaildb.com/api/json/v1/1/");
             var request = new RestRequest("list.php?c=list");
 
-            // Await the asynchronous request
-            var response = await client.ExecuteAsync(request);
+            // Execute the request and get the response
+            var response = client.Execute(request);
 
             // Ensure response content is not null
             if (response.Content == null)
@@ -25,14 +25,33 @@ namespace DrinksInfo
                 throw new Exception("Response content is null");
             }
 
-            // Deserialize the JSON content
-            var conversion = JsonConvert.DeserializeObject<Category>(response.Content);
-            return conversion;
+            // Deserialize the JSON response
+            var drinksResponse = JsonConvert.DeserializeObject<DrinksResponse>(response.Content);
+
+            // Check if the deserialization was successful
+            if (drinksResponse == null || drinksResponse.drinks == null)
+            {
+                throw new Exception("Failed to deserialize response");
+            }
+
+            // Print the categories in a nice format
+            foreach (var drink in drinksResponse.drinks)
+            {
+                Console.WriteLine($"Category: {drink.strCategory}");
+            }
         }
+
     }
 
-    public class Category
+    public class Drink
     {
-        public List<string> Categories { get; set; }
+        public string strCategory { get; set; }
     }
+
+    public class DrinksResponse
+    {
+        public List<Drink> drinks { get; set; }
+    }
+
 }
+

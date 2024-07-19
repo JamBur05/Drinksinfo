@@ -7,7 +7,7 @@
             Console.WriteLine("Hello, World!");
 
             DrinksService drinkService = new DrinksService();
-            Console.WriteLine(DrinksService.GetCategoriesAsync());
+            DrinksService.GetCategories();
         }
     }
 }
