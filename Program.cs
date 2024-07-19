@@ -1,13 +1,11 @@
-﻿namespace DrinksInfo
-{
-    internal class Program
+﻿    namespace DrinksInfo
     {
-        static void Main(string[] args)
+        internal class Program
         {
-            Console.WriteLine("Hello, World!");
-
-            DrinksService drinkService = new DrinksService();
-            DrinksService.GetCategories();
+            static void Main(string[] args)
+            {
+                UserInput input = new UserInput();
+                input.GetInputCategories().Wait();
+            }
         }
     }
-}

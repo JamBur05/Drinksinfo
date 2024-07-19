@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using DrinksInfo.Models;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RestSharp;
 using System;
@@ -11,13 +12,13 @@ namespace DrinksInfo
 {
     public class DrinksService
     {
-        public static void GetCategories()
+        public static async Task GetCategories()
         {
             var client = new RestClient("https://www.thecocktaildb.com/api/json/v1/1/");
             var request = new RestRequest("list.php?c=list");
 
             // Execute the request and get the response
-            var response = client.Execute(request);
+            var response = await client.ExecuteAsync(request);
 
             // Ensure response content is not null
             if (response.Content == null)
@@ -26,32 +27,56 @@ namespace DrinksInfo
             }
 
             // Deserialize the JSON response
-            var drinksResponse = JsonConvert.DeserializeObject<DrinksResponse>(response.Content);
+            var categoryResponse = JsonConvert.DeserializeObject<Categories>(response.Content);
 
             // Check if the deserialization was successful
-            if (drinksResponse == null || drinksResponse.drinks == null)
+            if (categoryResponse == null || categoryResponse.drinks == null)
             {
                 throw new Exception("Failed to deserialize response");
             }
 
             // Print the categories in a nice format
-            foreach (var drink in drinksResponse.drinks)
+            Console.WriteLine("CATEGORIES");
+            int index = 1;
+            foreach (var drink in categoryResponse.drinks)
             {
-                Console.WriteLine($"Category: {drink.strCategory}");
+                Console.WriteLine($"{index}: {drink.strCategory}");
+                index++;
             }
         }
 
-    }
+        public async Task GetDrinksByCategory(string category)
+        {
+            var client = new RestClient("https://www.thecocktaildb.com/api/json/v1/1/");
+            var request = new RestRequest("filter.php?c=" + category);
 
-    public class Drink
-    {
-        public string strCategory { get; set; }
-    }
+            // Execute the request and get the response
+            var response = await client.ExecuteAsync(request);
 
-    public class DrinksResponse
-    {
-        public List<Drink> drinks { get; set; }
-    }
+            // Ensure response content is not null
+            if (response.Content == null)
+            {
+                throw new Exception("Response content is null");
+            }
 
+            // Deserialize the JSON response
+            var drinkResponse = JsonConvert.DeserializeObject<DrinksResponse>(response.Content);
+
+            // Check if the deserialization was successful
+            if (drinkResponse == null || drinkResponse.drinks == null)
+            {
+                throw new Exception("Failed to deserialize response");
+            }
+
+            // Print the categories in a nice format
+            Console.WriteLine("DRINKS");
+            int index = 1;
+            foreach (var drink in drinkResponse.drinks)
+            {
+                Console.WriteLine($"{index}: {drink.strDrink}");
+                index++;
+            }
+        }
+    }
 }
 
