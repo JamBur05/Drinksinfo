@@ -36,6 +36,9 @@ namespace DrinksInfo
             }
 
             // Print the categories in a nice format
+
+            TableDisplayer.DisplayTable<Category>(categoryResponse.drinks, "Categories");
+
             Console.WriteLine("CATEGORIES");
             int index = 1;
             foreach (var drink in categoryResponse.drinks)
