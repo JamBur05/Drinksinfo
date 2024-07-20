@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\james\\source\\repos\\Drinksinfo\\DrinksInfo.csproj": {}
+    "C:\\Users\\james\\Source\\Repos\\Drinksinfo\\DrinksInfo.csproj": {}
   },
   "projects": {
-    "C:\\Users\\james\\source\\repos\\Drinksinfo\\DrinksInfo.csproj": {
+    "C:\\Users\\james\\Source\\Repos\\Drinksinfo\\DrinksInfo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\james\\source\\repos\\Drinksinfo\\DrinksInfo.csproj",
+        "projectUniqueName": "C:\\Users\\james\\Source\\Repos\\Drinksinfo\\DrinksInfo.csproj",
         "projectName": "DrinksInfo",
-        "projectPath": "C:\\Users\\james\\source\\repos\\Drinksinfo\\DrinksInfo.csproj",
+        "projectPath": "C:\\Users\\james\\Source\\Repos\\Drinksinfo\\DrinksInfo.csproj",
         "packagesPath": "C:\\Users\\james\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\james\\Source\\Repos\\Drinksinfo\\obj\\",
         "projectStyle": "PackageReference",

@@ -1,0 +1,40 @@
+# Ignore Visual Studio temporary files, build results, and
+# build logs.
+*.log
+*.obj
+*.exe
+*.pch
+*.pdb
+*.ilk
+*.idb
+*.CSPROJ.user
+*.VCXPROJ.user
+*.ruleset
+*.dbmdl
+*.dbproj.schemaview
+*.jfm
+*.lastbuildstate
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.vscode
+.vscode/
+.vs/
+.vs/*
+# Ignore build directories
+bin/
+obj/
+# Ignore NuGet packages
+*.nupkg
+# Ignore the packages folder in the root of the repository
+packages/
+# Ignore Recycle Bin used by Windows
+$RECYCLE.BIN/
+# Ignore Azure DevOps personal access tokens
+.vsts/
+# Ignore JetBrains Rider project files
+.idea/
+.idea/*
+# Ignore macOS system files
+.DS_Store

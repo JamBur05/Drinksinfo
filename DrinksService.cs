@@ -12,7 +12,7 @@ namespace DrinksInfo
 {
     public class DrinksService
     {
-        public static async Task GetCategories()
+        public async Task GetCategories()
         {
             var client = new RestClient("https://www.thecocktaildb.com/api/json/v1/1/");
             var request = new RestRequest("list.php?c=list");
