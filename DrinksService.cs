@@ -36,16 +36,7 @@ namespace DrinksInfo
             }
 
             // Print the categories in a nice format
-
             TableDisplayer.DisplayTable<Category>(categoryResponse.drinks, "Categories");
-
-            Console.WriteLine("CATEGORIES");
-            int index = 1;
-            foreach (var drink in categoryResponse.drinks)
-            {
-                Console.WriteLine($"{index}: {drink.strCategory}");
-                index++;
-            }
         }
 
         public async Task GetDrinksByCategory(string category)
@@ -71,14 +62,32 @@ namespace DrinksInfo
                 throw new Exception("Failed to deserialize response");
             }
 
-            // Print the categories in a nice format
-            Console.WriteLine("DRINKS");
-            int index = 1;
-            foreach (var drink in drinkResponse.drinks)
+            TableDisplayer.DisplayTable<Drink>(drinkResponse.drinks, category);
+        }
+
+        public async Task GetDrinkByName(string drinkName)
+        {
+            var client = new RestClient("https://www.thecocktaildb.com/api/json/v1/1/");
+            var request = new RestRequest("search.php?s=" + drinkName);
+
+            var response = await client.ExecuteAsync(request);
+
+            // Ensure response content is not null
+            if (response.Content == null)
             {
-                Console.WriteLine($"{index}: {drink.strDrink}");
-                index++;
+                throw new Exception("Response content is null");
             }
+
+            // Deserialize the JSON response
+            var drinkResponse = JsonConvert.DeserializeObject<DetailedDrink>(response.Content);
+
+            // Check if the deserialization was successful
+            if (drinkResponse == null || drinkResponse.drinks == null)
+            {
+                throw new Exception("Failed to deserialize response");
+            }
+
+            TableDisplayer.DisplayTable<DrinkInfo>(drinkResponse.drinks, drinkName);
         }
     }
 }

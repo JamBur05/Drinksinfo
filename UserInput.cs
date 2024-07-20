@@ -14,11 +14,33 @@ namespace DrinksInfo
         {
             await service.GetCategories();
 
-            Console.WriteLine("Enter a category number to see drinks: ");
+            Console.WriteLine("Enter a category number to see drinks or type \"EXIT\" to quit: ");
             string category = Console.ReadLine();
 
+            if(category.ToUpper() == "EXIT")
+            {
+                Environment.Exit(0);
+            }
+            else
+            {
+                service.GetDrinksByCategory(category).Wait();
+                GetDrinkChoice().Wait();
+            }
+        }
 
-            service.GetDrinksByCategory(category).Wait();
+        public async Task GetDrinkChoice()
+        {
+            Console.WriteLine("Enter a drink number to see ingredients or \"0\" to return to categories: ");
+            string drink = Console.ReadLine();
+
+            if(drink == "0")
+            {
+                await GetInputCategories();
+            }
+            else
+            { 
+                await service.GetDrinkByName(drink);
+            }
         }
     }
 }
