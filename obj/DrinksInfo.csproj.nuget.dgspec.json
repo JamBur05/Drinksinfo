@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\james\\Source\\Repos\\Drinksinfo\\DrinksInfo.csproj": {}
+    "C:\\Users\\james\\source\\repos\\Drinksinfo\\DrinksInfo.csproj": {}
   },
   "projects": {
-    "C:\\Users\\james\\Source\\Repos\\Drinksinfo\\DrinksInfo.csproj": {
+    "C:\\Users\\james\\source\\repos\\Drinksinfo\\DrinksInfo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\james\\Source\\Repos\\Drinksinfo\\DrinksInfo.csproj",
+        "projectUniqueName": "C:\\Users\\james\\source\\repos\\Drinksinfo\\DrinksInfo.csproj",
         "projectName": "DrinksInfo",
-        "projectPath": "C:\\Users\\james\\Source\\Repos\\Drinksinfo\\DrinksInfo.csproj",
+        "projectPath": "C:\\Users\\james\\source\\repos\\Drinksinfo\\DrinksInfo.csproj",
         "packagesPath": "C:\\Users\\james\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\james\\Source\\Repos\\Drinksinfo\\obj\\",
+        "outputPath": "C:\\Users\\james\\source\\repos\\Drinksinfo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\james\\AppData\\Roaming\\NuGet\\NuGet.Config",
